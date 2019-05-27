@@ -1,0 +1,15 @@
+# Service to expose frontend
+apiVersion: v1
+kind: Service
+metadata:
+  name: mytodos
+  labels:
+    app: mytodos
+    tier: frontend
+spec:
+  ports:
+  - protocol: TCP
+    port: 8080
+  selector:
+    app: mytodos
+    tier: frontend

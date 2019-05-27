@@ -1,0 +1,30 @@
+# Application to deploy
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mytodos
+spec:
+  replicas: 2 # tells deployment to run 2 pods matching the template
+  selector:
+    matchLabels:
+      app: mytodos
+  template:   # create pods using pod definition in this template
+    metadata:
+      labels:
+        app: mytodos
+        tier: frontend
+    spec:
+      containers:
+      - name: mytodos
+        image: registry.ng.bluemix.net/iksdemofd/mytodos:1
+        imagePullPolicy: Always
+        resources:
+          requests:
+            cpu: 125m     # 250 millicores = 1/4 core
+            memory: 128Mi # 128 MB
+          limits:
+            cpu: 250m
+            memory: 384Mi
+        envFrom:
+         - secretRef:
+             name: binding-todo-cloudant
