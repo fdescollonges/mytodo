@@ -4,7 +4,7 @@ kind: Deployment
 metadata:
   name: mytodos
 spec:
-  replicas: 2 # tells deployment to run 2 pods matching the template
+  replicas: 1 # tells deployment to run 2 pods matching the template
   selector:
     matchLabels:
       app: mytodos
@@ -16,15 +16,15 @@ spec:
     spec:
       containers:
       - name: mytodos
-        image: registry.ng.bluemix.net/iksdemofd/mytodos:1
+        image: registry.ng.bluemix.net/iksdemo/mytodos:1
         imagePullPolicy: Always
         resources:
           requests:
-            cpu: 125m     # 250 millicores = 1/4 core
+            cpu: 250m     # 250 millicores = 1/4 core
             memory: 128Mi # 128 MB
           limits:
-            cpu: 250m
+            cpu: 500m     # 500 millicores = 1/2 core
             memory: 384Mi
         envFrom:
          - secretRef:
-             name: binding-todo-cloudant
+             name: binding-cloudant-demo-todo
