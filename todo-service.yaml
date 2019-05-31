@@ -13,7 +13,7 @@ spec:
   selector:
     app: mytodos
     tier: frontend
-
+---
 # Ingress to redirect app and use SSL
 apiVersion: extensions/v1beta1
 kind: Ingress

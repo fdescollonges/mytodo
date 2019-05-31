@@ -16,14 +16,14 @@ spec:
     spec:
       containers:
       - name: mytodos
-        image: registry.ng.bluemix.net/iksdemo/mytodos:1
+        image: registry.ng.bluemix.net/iks-demo/mytodos:1
         imagePullPolicy: Always
         resources:
           requests:
-            cpu: 250m     # 250 millicores = 1/4 core
+            cpu: 125m     # 250 millicores = 1/8 core
             memory: 128Mi # 128 MB
           limits:
-            cpu: 500m     # 500 millicores = 1/2 core
+            cpu: 250m     # 500 millicores = 1/4 core
             memory: 384Mi
         envFrom:
          - secretRef:
